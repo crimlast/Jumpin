@@ -6,6 +6,8 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    public TextMeshProUGUI pointSystem;
+
     float score;
     public TMP_Text scoreTxt;
     public TMP_Text deathTxt;
@@ -22,6 +24,8 @@ public class GameManager : MonoBehaviour
         //increase Score
         score += Time.deltaTime * 2;
         scoreTxt.text = "Score: " + (int)score;
+
+        pointSystem.text = "" + (int)score;
     }
 
     public void Pause(){
@@ -35,5 +39,10 @@ public class GameManager : MonoBehaviour
     public void ReTry(){
          SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
+    }
+
+    public int getScore()
+    {
+        return (int)score;
     }
 }
