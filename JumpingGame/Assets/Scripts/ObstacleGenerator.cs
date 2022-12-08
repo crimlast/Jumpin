@@ -28,17 +28,20 @@ public class ObstacleGenerator : MonoBehaviour
         }
     }
 
-    void GenerateObstacle()
+    private void GenerateObstacle()
     {
         int rand = Random.Range(0,2);
         if(rand == 0){
-            GameObject obstacle = Instantiate(obs, transform.position, transform.rotation);
-            obstacle.GetComponent<Obstacle>().gen = this;
+            SpawnObstacle(obs);
         }else if(rand == 1){
-            GameObject obstacle = Instantiate(obs1, transform.position, transform.rotation);
-            obstacle.GetComponent<Obstacle>().gen = this;
+            SpawnObstacle(obs1);
         }
         
+        void SpawnObstacle(GameObject obstacleToSpawn)
+        {
+            GameObject obstacle = Instantiate(obstacleToSpawn, transform.position, transform.rotation);
+            obstacle.GetComponent<Obstacle>().gen = this;
+        }
     }
 
     public void GenerateObstacleWithGap(){
